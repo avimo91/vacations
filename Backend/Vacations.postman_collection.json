@@ -1,0 +1,314 @@
+{
+  "info": {
+    "_postman_id": "f057c856-c5be-457a-90ab-967c581b3398",
+    "name": "Vacations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54525234",
+    "_collection_link": "https://go.postman.co/collection/54525234-f057c856-c5be-457a-90ab-967c581b3398?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Vacations",
+      "item": [
+        {
+          "name": "Get All Vacations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/vacations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "vacations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get One Vacation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/vacations/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "vacations",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Vacation",
+          "request": {
+            "auth": {
+              "type": "bearer"
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/vacations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "vacations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Vacation",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/vacations/13?destination=Vienna Updated&description=Updated vacation in Vienna&startDate=2026-12-10&endDate=2026-12-18&price=3000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "vacations",
+                "13"
+              ],
+              "query": [
+                {
+                  "key": "destination",
+                  "value": "Vienna Updated"
+                },
+                {
+                  "key": "description",
+                  "value": "Updated vacation in Vienna"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-12-10"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-12-18"
+                },
+                {
+                  "key": "price",
+                  "value": "3000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Vacation",
+          "request": {
+            "auth": {
+              "type": "bearer"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/vacations/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "vacations",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Admin\",\r\n  \"lastName\": \"Vacations\",\r\n  \"email\": \"admin-vacations@example.com\",\r\n  \"password\": \"Admin1234!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nif (pm.response.code === 200) {\r\n    const token = pm.response.json();\r\n    const payload = JSON.parse(atob(token.split(\".\")[1]));\r\n\r\n    if (payload.user.role === \"Admin\") {\r\n        pm.collectionVariables.set(\"adminToken\", token);\r\n        console.log(\"Admin token updated\");\r\n    }\r\n    else if (payload.user.role === \"User\") {\r\n        pm.collectionVariables.set(\"userToken\", token);\r\n        console.log(\"User token updated\");\r\n    }\r\n}\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"avi12-test@example.com\",\r\n  \"password\": \"1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Likes",
+      "item": [
+        {
+          "name": "Get My Likes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/likes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "likes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Like",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/likes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "likes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Like",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/likes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "likes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{userToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "userToken",
+      "secret": true
+    },
+    {
+      "key": "adminToken",
+      "secret": true
+    }
+  ]
+}

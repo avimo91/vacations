@@ -1,0 +1,132 @@
+
+.McpChat {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    color: #1f2937;
+}
+
+.McpChat h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.McpChat .mcp-description {
+    text-align: center;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.McpChat form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 28px 0;
+}
+
+.McpChat textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.McpChat textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px #dbeafe;
+}
+
+.McpChat button {
+    align-self: flex-start;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.McpChat button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.McpChat .mcp-loading {
+    color: #64748b;
+}
+
+.McpChat .mcp-error {
+    padding: 14px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.McpChat .mcp-answer {
+    margin-top: 28px;
+    padding: 28px 32px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.McpChat .mcp-answer > h3 {
+    margin: 0 0 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #0f172a;
+}
+
+.McpChat .mcp-markdown {
+    font-size: 15px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.McpChat .mcp-markdown h1,
+.McpChat .mcp-markdown h2,
+.McpChat .mcp-markdown h3 {
+    color: #1e3a8a;
+    margin: 24px 0 12px;
+    line-height: 1.4;
+}
+
+.McpChat .mcp-markdown p {
+    margin-bottom: 16px;
+}
+
+.McpChat .mcp-markdown ul,
+.McpChat .mcp-markdown ol {
+    padding-left: 28px;
+    margin: 12px 0 20px;
+}
+
+.McpChat .mcp-markdown li {
+    margin-bottom: 8px;
+}
+
+.McpChat .mcp-markdown strong {
+    color: #0f172a;
+}
+
+@media (max-width: 600px) {
+    .McpChat {
+        padding: 20px 12px;
+    }
+
+    .McpChat h2 {
+        font-size: 24px;
+    }
+
+    .McpChat .mcp-answer {
+        padding: 20px 16px;
+    }
+}

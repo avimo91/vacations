@@ -1,0 +1,50 @@
+.Menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.Menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.Menu a:hover,
+.Menu a.active {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.Menu span {
+    color: #dcecff;
+    font-size: 14px;
+}
+
+.Menu button {
+    background-color: #e85d5d;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.Menu button:hover {
+    background-color: #cd4141;
+}
+
+@media (max-width: 600px) {
+    .Menu {
+        gap: 8px;
+    }
+
+    .Menu a {
+        padding: 7px;
+        font-size: 14px;
+    }
+}

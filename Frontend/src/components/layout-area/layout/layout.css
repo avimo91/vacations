@@ -1,0 +1,43 @@
+
+.Layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+.Layout > header {
+    background-color: #176baf;
+    color: white;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.Layout > nav {
+    background-color: #17324d;
+    color: white;
+    padding: 12px 24px;
+}
+
+.Layout > main {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.Layout > footer {
+    background-color: #17324d;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+}
+
+@media (max-width: 600px) {
+    .Layout > main {
+        padding: 20px 12px;
+    }
+
+    .Layout > nav {
+        padding: 12px;
+    }
+}

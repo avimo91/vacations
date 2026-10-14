@@ -1,0 +1,42 @@
+
+services:
+  mysql-service:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - ./Database/vacation_system.sql:/docker-entrypoint-initdb.d/vacation_system.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend-service:
+    build: ./Backend
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./Backend/.env
+    environment:
+      MYSQL_HOST: mysql-service
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./Backend/src/assets/images:/app/src/assets/images
+    depends_on:
+      mysql-service:
+        condition: service_healthy
+
+  frontend-service:
+    build: ./Frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend-service
+
+volumes:
+  mysql-volume:
